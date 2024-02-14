@@ -72,7 +72,9 @@ class CustomCombobox<T> extends StatelessWidget {
                   child: value.toString() != addButtonLabel
                       ? Text(
                           value.toString(),
-                          style: GoogleFonts.lato(),
+                          style: GoogleFonts.lato(
+                            fontSize: 14,
+                          ),
                         )
                       : Center(
                           child: Container(

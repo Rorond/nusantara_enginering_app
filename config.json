@@ -3,9 +3,11 @@
         "main_navigation",
         "home",
         "about",
+        "why_us",
         "service",
         "product",
-        "documentation"
+        "documentation",
+        "location"
     ],
     "module_directory_name": "module",
     "experimental_mode": false,

@@ -1,9 +1,6 @@
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
-import 'package:landing_page/module/home/widget/cbo_location.dart';
-import 'package:landing_page/shared/widgets/form/c_textbox.dart';
 import 'package:typewritertext/typewritertext.dart';
-import '../controller/home_controller.dart';
 import 'package:landing_page/core.dart';
 import 'package:get/get.dart';
 
@@ -19,8 +16,7 @@ class HomeView extends StatelessWidget {
 
         return Scaffold(
           backgroundColor: Colors.black.withOpacity(0.1),
-          body: SingleChildScrollView(
-              child: Obx(
+          body: Obx(
             () => Container(
               width: double.infinity,
               height: MediaQuery.of(context).size.height,
@@ -38,20 +34,20 @@ class HomeView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Layanan Service Ac Terbaik",
+                      "Nusantara Engineering Solution",
                       style: GoogleFonts.lato(
-                        fontSize: MediaQuery.of(context).size.width * 0.06,
+                        fontSize: MediaQuery.of(context).size.width * 0.05,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: Color(0xFF094A45),
                       ),
                     ),
                     TypeWriterText(
                       repeat: true,
-                      duration: const Duration(milliseconds: 200),
+                      duration: const Duration(milliseconds: 250),
                       text: Text(
-                        'No 1 Di JABODETABEK ...!!!',
+                        'MAKE MORE HAPPEN..',
                         style: GoogleFonts.lato(
-                          fontSize: MediaQuery.of(context).size.width * 0.06,
+                          fontSize: MediaQuery.of(context).size.width * 0.05,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),
@@ -84,7 +80,7 @@ class HomeView extends StatelessWidget {
                                           String message =
                                               "Form Pemesanan CV. NUSANTARA ENGINERING SOLUTION\n\nEmail : ${controller.emailController.text}\nNama : ${controller.nameController.text}\nLokasi : ${controller.locationController.text}\nKendala : ${controller.kendalaController.text}";
                                           await controller.sendToWhatsApp(
-                                            "6282283218690",
+                                            "6282388453744",
                                             message,
                                           );
                                         },
@@ -195,7 +191,7 @@ class HomeView extends StatelessWidget {
                           decoration: BoxDecoration(
                             color: controller.isOrderFocus.value
                                 ? Colors.white
-                                : Colors.blue[700],
+                                : Color(0xFF094A45),
                             borderRadius: const BorderRadius.all(
                               Radius.circular(30.0),
                             ),
@@ -207,7 +203,7 @@ class HomeView extends StatelessWidget {
                                 fontSize: 20.0,
                                 fontWeight: FontWeight.bold,
                                 color: controller.isOrderFocus.value
-                                    ? Colors.blue[700]
+                                    ? Color(0xFF094A45)
                                     : Colors.white,
                               ),
                             ),
@@ -219,7 +215,7 @@ class HomeView extends StatelessWidget {
                 ),
               ),
             ),
-          )),
+          ),
         );
       },
     );

@@ -15,19 +15,17 @@ class ProductView extends StatelessWidget {
         controller.view = this;
 
         return Scaffold(
-          body: SingleChildScrollView(
-            child: Container(
-                height: MediaQuery.of(context).size.height,
-                padding: const EdgeInsets.all(10.0),
-                child: Center(
-                  child: Text(
-                    "Halaman Variasi Produk",
-                    style: GoogleFonts.lato(
-                      fontSize: 30.0,
-                    ),
+          body: Container(
+              height: MediaQuery.of(context).size.height,
+              padding: const EdgeInsets.all(10.0),
+              child: Center(
+                child: Text(
+                  "Halaman Variasi Produk",
+                  style: GoogleFonts.lato(
+                    fontSize: 30.0,
                   ),
-                )),
-          ),
+                ),
+              )),
         );
       },
     );

@@ -7,7 +7,8 @@ import '../view/main_navigation_view.dart';
 class MainNavigationController extends GetxController
     with GetSingleTickerProviderStateMixin {
   MainNavigationView? view;
-
+  final double latitude = 37.7749;
+  final double longitude = -122.4194;
   final isFocus = RxBool(false);
   late TabController tabController;
   final PageController pageController = PageController(initialPage: 0);
@@ -98,21 +99,21 @@ class MainNavigationController extends GetxController
       isProductHover.value = false;
       isDocumentHover.value = false;
       selectedMenu.value = index;
-    } else if (index == 2) {
+    } else if (index == 3) {
       isHomeHover.value = false;
       isAboutHover.value = false;
       isServiceHover.value = true;
       isProductHover.value = false;
       isDocumentHover.value = false;
       selectedMenu.value = index;
-    } else if (index == 3) {
+    } else if (index == 4) {
       isHomeHover.value = false;
       isAboutHover.value = false;
       isServiceHover.value = false;
       isProductHover.value = true;
       isDocumentHover.value = false;
       selectedMenu.value = index;
-    } else if (index == 4) {
+    } else if (index == 5) {
       isHomeHover.value = false;
       isAboutHover.value = false;
       isServiceHover.value = false;
@@ -201,6 +202,26 @@ class MainNavigationController extends GetxController
       await launchUrl(instagramUrl);
     } else {
       throw 'Could not launch $instagramUrl';
+    }
+  }
+
+  launchMaps() async {
+    final Uri googleMapsUrl = Uri.parse(
+        "https://www.google.com/maps/search/?api=1&query=$latitude,$longitude");
+    if (await canLaunchUrl(googleMapsUrl)) {
+      await launchUrl(googleMapsUrl);
+    } else {
+      throw 'Could not launch $googleMapsUrl';
+    }
+  }
+
+  launchEmail(String email) async {
+    String emailUrl = 'mailto:$email';
+    final Uri emailLaunchUrl = Uri.parse(emailUrl);
+    if (await canLaunchUrl(emailLaunchUrl)) {
+      await launchUrl(emailLaunchUrl);
+    } else {
+      throw 'Could not launch $emailUrl';
     }
   }
 }
