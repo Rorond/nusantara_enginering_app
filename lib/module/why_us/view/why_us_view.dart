@@ -56,7 +56,7 @@ class WhyUsView extends StatelessWidget {
                                       bottom: 0, top: 15, left: 15, right: 15),
                                   child: TypeWriterText(
                                     repeat: false,
-                                    duration: Duration(milliseconds: 100),
+                                    duration: Duration(milliseconds: 50),
                                     text: Text(
                                       controller.whyUsContent.value,
                                       style: GoogleFonts.lato(
@@ -108,7 +108,7 @@ class WhyUsView extends StatelessWidget {
                                       MediaQuery.of(context).size.height * 0.4,
                                   child: TypeWriterText(
                                     repeat: false,
-                                    duration: Duration(milliseconds: 100),
+                                    duration: Duration(milliseconds: 50),
                                     text: Text(
                                       controller.whyUsContent.value,
                                       style: GoogleFonts.lato(

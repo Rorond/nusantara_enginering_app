@@ -20,7 +20,7 @@ class DocumentationView extends StatelessWidget {
               padding: const EdgeInsets.all(10.0),
               child: Center(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
@@ -31,7 +31,9 @@ class DocumentationView extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-                    SizedBox(height: 30),
+                    MediaQuery.of(context).size.width < 580
+                        ? SizedBox(height: 10)
+                        : SizedBox(height: 30),
                     LayoutBuilder(
                       builder: (context, constraint) {
                         List menus = [
@@ -64,12 +66,16 @@ class DocumentationView extends StatelessWidget {
                             (index) {
                               var item = menus[index];
 
-                              var size = constraint.biggest.width / 8;
+                              var size = MediaQuery.of(context).size.width < 580
+                                  ? constraint.biggest.width / 4
+                                  : constraint.biggest.width / 8;
 
                               return Container(
                                 height: size / 1.5,
                                 width: size,
-                                margin: EdgeInsets.all(10),
+                                margin: MediaQuery.of(context).size.width < 580
+                                    ? EdgeInsets.all(5)
+                                    : EdgeInsets.all(10),
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   image: DecorationImage(

@@ -22,11 +22,48 @@ class MainNavigationView extends StatelessWidget {
               padding: EdgeInsets.zero,
               children: <Widget>[
                 DrawerHeader(
-                  child: Image.asset(
-                    'assets/images/logo.png',
-                    height: 150,
-                    width: 150,
-                  ),
+                  child: Stack(children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      child: Image.asset(
+                        'assets/images/logo.png',
+                        height: 150,
+                        width: 150,
+                      ),
+                    ),
+                    Positioned(
+                      left: 230,
+                      child: InkWell(
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        splashColor: Colors.transparent,
+                        onHover: (value) {
+                          controller.setIsFocus();
+                        },
+                        onTap: () {
+                          controller.whatsappOpen('6282388453744');
+                        },
+                        child: Container(
+                          width: 40,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            color: primaryColor,
+                            border: Border.all(width: 1.0, color: primaryColor),
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(100.0),
+                            ),
+                          ),
+                          child: Center(
+                            child: Icon(
+                              Icons.headset_mic_outlined,
+                              color: Colors.white,
+                              size: 30,
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
+                  ]),
                   decoration: const BoxDecoration(
                       // color: Color.fromRGBO(176, 218, 255, 1),
                       ),
@@ -81,7 +118,7 @@ class MainNavigationView extends StatelessWidget {
                   },
                 ),
                 ListTile(
-                  title: const Text('Documentation'),
+                  title: const Text('Clients'),
                   onTap: () async {
                     Get.back();
                     await controller.pageController.animateToPage(
@@ -96,12 +133,12 @@ class MainNavigationView extends StatelessWidget {
             ),
           ),
           appBar: AppBar(
-            toolbarHeight: 65,
+            toolbarHeight: 80,
             backgroundColor: Colors.white,
             title: Container(
               margin: const EdgeInsets.all(5),
-              height: 60,
-              width: 60,
+              height: 130,
+              width: 150,
               decoration: const BoxDecoration(
                 // color: Color.fromARGB(248, 202, 225, 248),
                 borderRadius: BorderRadius.all(
@@ -109,9 +146,9 @@ class MainNavigationView extends StatelessWidget {
                 ),
               ),
               child: Image.asset(
-                'assets/images/ico_logo.png',
-                height: 60,
-                width: 60,
+                'assets/images/logo.png',
+                height: 150,
+                width: 150,
               ),
             ),
             titleTextStyle: GoogleFonts.lato(
@@ -357,7 +394,7 @@ class MainNavigationView extends StatelessWidget {
                                         controller.setDocumentHover();
                                       },
                                       child: Text(
-                                        "Documentation",
+                                        "Clients",
                                         style: GoogleFonts.lato(
                                           fontSize: MediaQuery.of(context)
                                                       .size
@@ -393,12 +430,12 @@ class MainNavigationView extends StatelessWidget {
                                   controller.setIsFocus();
                                 },
                                 onTap: () {
-                                  // controller.setIsFocus();
+                                  controller.whatsappOpen('6282388453744');
                                 },
                                 child: Container(
                                   width:
                                       MediaQuery.of(context).size.width < 1000
-                                          ? 170
+                                          ? 180
                                           : 200,
                                   padding: const EdgeInsets.symmetric(
                                       vertical: 10, horizontal: 25),
@@ -412,20 +449,32 @@ class MainNavigationView extends StatelessWidget {
                                       Radius.circular(25.0),
                                     ),
                                   ),
-                                  child: Text(
-                                    "Customer Service",
-                                    style: GoogleFonts.lato(
-                                      fontSize:
-                                          MediaQuery.of(context).size.width <
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.headset_mic_outlined,
+                                        color: controller.isFocus.value
+                                            ? Colors.white
+                                            : Colors.black,
+                                      ),
+                                      SizedBox(width: 5),
+                                      Text(
+                                        "Customer Service",
+                                        style: GoogleFonts.lato(
+                                          fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .width <
                                                   1000
                                               ? 12
                                               : 14,
-                                      fontWeight: FontWeight.w600,
-                                      color: controller.isFocus.value
-                                          ? Colors.white
-                                          : Colors.black,
-                                    ),
-                                    textAlign: TextAlign.center,
+                                          fontWeight: FontWeight.w600,
+                                          color: controller.isFocus.value
+                                              ? Colors.white
+                                              : Colors.black,
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
@@ -434,12 +483,11 @@ class MainNavigationView extends StatelessWidget {
                         );
                       },
                     ),
-              SizedBox(width: MediaQuery.of(context).size.width * 0.05)
             ],
           ),
           body: PageView(
             allowImplicitScrolling: true,
-            scrollDirection: Axis.vertical,
+            scrollDirection: Axis.horizontal,
             controller: controller.pageController,
             onPageChanged: (value) {
               controller.onPageChange(value);
@@ -454,92 +502,92 @@ class MainNavigationView extends StatelessWidget {
               DocumentationView(),
             ],
           ),
-          bottomNavigationBar: Container(
-            height: MediaQuery.of(context).size.width < 600 ? 40 : 60,
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            color: primaryColor,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "© 2024 Nusantara Engineering Solutions.",
-                  style: GoogleFonts.lato(
-                    fontSize:
-                        MediaQuery.of(context).size.width < 600 ? 12.0 : 14.0,
-                    fontWeight: MediaQuery.of(context).size.width < 600
-                        ? FontWeight.w300
-                        : FontWeight.w400,
-                    color: Colors.white.withOpacity(0.5),
-                    fontStyle: FontStyle.italic,
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Container(
-                      height: 40,
-                      width: 30,
-                      child: IconButton(
-                        onPressed: () {
-                          controller.whatsappOpen("6282288384111");
-                        },
-                        icon: FaIcon(
-                          FontAwesomeIcons.whatsapp,
-                          color: Colors.white.withOpacity(0.5),
-                          size: 25,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.all(0),
-                      height: 40,
-                      width: 30,
-                      child: IconButton(
-                        onPressed: () {
-                          controller.instagramOpen("infoservicenusantara");
-                        },
-                        icon: FaIcon(
-                          FontAwesomeIcons.instagram,
-                          color: Colors.white.withOpacity(0.5),
-                          size: 25,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: 40,
-                      width: 30,
-                      child: IconButton(
-                        onPressed: () {
-                          controller
-                              .launchEmail('infodervicenusantara@gmail.com');
-                        },
-                        icon: Icon(
-                          Icons.mail_outline,
-                          color: Colors.white.withOpacity(0.5),
-                          size: 25,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.all(0),
-                      height: 40,
-                      width: 30,
-                      child: IconButton(
-                        onPressed: () {
-                          controller.launchMaps();
-                        },
-                        icon: Icon(
-                          Icons.location_on_outlined,
-                          color: Colors.white.withOpacity(0.5),
-                          size: 25,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
+          // bottomNavigationBar: Container(
+          //   height: MediaQuery.of(context).size.width < 600 ? 40 : 60,
+          //   padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          //   color: primaryColor,
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //     children: [
+          //       Text(
+          //         "© 2024 Nusantara Engineering Solutions.",
+          //         style: GoogleFonts.lato(
+          //           fontSize:
+          //               MediaQuery.of(context).size.width < 600 ? 12.0 : 14.0,
+          //           fontWeight: MediaQuery.of(context).size.width < 600
+          //               ? FontWeight.w300
+          //               : FontWeight.w400,
+          //           color: Colors.white.withOpacity(0.5),
+          //           fontStyle: FontStyle.italic,
+          //         ),
+          //       ),
+          //       Row(
+          //         mainAxisAlignment: MainAxisAlignment.end,
+          //         children: [
+          //           Container(
+          //             height: 40,
+          //             width: 30,
+          //             child: IconButton(
+          //               onPressed: () {
+          //                 controller.whatsappOpen("6282388453744");
+          //               },
+          //               icon: FaIcon(
+          //                 FontAwesomeIcons.whatsapp,
+          //                 color: Colors.white.withOpacity(0.5),
+          //                 size: 25,
+          //               ),
+          //             ),
+          //           ),
+          //           Container(
+          //             margin: EdgeInsets.all(0),
+          //             height: 40,
+          //             width: 30,
+          //             child: IconButton(
+          //               onPressed: () {
+          //                 controller.instagramOpen("infoservicenusantara");
+          //               },
+          //               icon: FaIcon(
+          //                 FontAwesomeIcons.instagram,
+          //                 color: Colors.white.withOpacity(0.5),
+          //                 size: 25,
+          //               ),
+          //             ),
+          //           ),
+          //           Container(
+          //             height: 40,
+          //             width: 30,
+          //             child: IconButton(
+          //               onPressed: () {
+          //                 controller
+          //                     .launchEmail('infodervicenusantara@gmail.com');
+          //               },
+          //               icon: Icon(
+          //                 Icons.mail_outline,
+          //                 color: Colors.white.withOpacity(0.5),
+          //                 size: 25,
+          //               ),
+          //             ),
+          //           ),
+          //           Container(
+          //             margin: EdgeInsets.all(0),
+          //             height: 40,
+          //             width: 30,
+          //             child: IconButton(
+          //               onPressed: () {
+          //                 controller.launchMaps();
+          //               },
+          //               icon: Icon(
+          //                 Icons.location_on_outlined,
+          //                 color: Colors.white.withOpacity(0.5),
+          //                 size: 25,
+          //               ),
+          //             ),
+          //           ),
+          //         ],
+          //       ),
+          //     ],
+          //   ),
+          // ),
         );
       },
     );

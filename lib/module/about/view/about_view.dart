@@ -65,7 +65,7 @@ class AboutView extends StatelessWidget {
                                       child: TypeWriterText(
                                         repeat: false,
                                         duration:
-                                            const Duration(milliseconds: 100),
+                                            const Duration(milliseconds: 50),
                                         text: Text(
                                           controller.aboutContent.value,
                                           style: GoogleFonts.lato(
@@ -137,7 +137,7 @@ class AboutView extends StatelessWidget {
                                       child: TypeWriterText(
                                         repeat: false,
                                         duration:
-                                            const Duration(milliseconds: 100),
+                                            const Duration(milliseconds: 50),
                                         text: Text(
                                           controller.aboutContent.value,
                                           style: GoogleFonts.lato(
