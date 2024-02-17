@@ -63,3 +63,5 @@ export 'package:landing_page/module/about/widget/why_us_mobile.dart';
 export 'package:landing_page/module/service/widget/service_card_item.dart';
 export 'package:landing_page/module/service/widget/service_list_item.dart';
 export 'package:landing_page/module/service/widget/service_title.dart';
+export 'package:landing_page/module/product/widget/product_list_item.dart';
+export 'package:landing_page/module/product/widget/product_title.dart';
