@@ -1,8 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import '../controller/product_controller.dart';
 import 'package:landing_page/core.dart';
-import 'package:get/get.dart';
+import 'package:landing_page/module/product/widget/product_title.dart';
 
 class ProductView extends StatelessWidget {
   const ProductView({Key? key}) : super(key: key);
@@ -16,16 +13,19 @@ class ProductView extends StatelessWidget {
 
         return Scaffold(
           body: Container(
-              height: MediaQuery.of(context).size.height,
-              padding: const EdgeInsets.all(10.0),
-              child: Center(
-                child: Text(
-                  "Halaman Variasi Produk",
-                  style: GoogleFonts.lato(
-                    fontSize: 30.0,
-                  ),
-                ),
-              )),
+            height: MediaQuery.of(context).size.height,
+            // padding: const EdgeInsets.all(10.0),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.8,
+                      child: ProductTitle()),
+                  FooterView(),
+                ],
+              ),
+            ),
+          ),
         );
       },
     );

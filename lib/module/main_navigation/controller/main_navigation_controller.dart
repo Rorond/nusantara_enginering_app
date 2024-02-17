@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart';
-import '../view/main_navigation_view.dart';
+import 'package:landing_page/core.dart';
 
 class MainNavigationController extends GetxController
     with GetSingleTickerProviderStateMixin {
@@ -30,6 +26,11 @@ class MainNavigationController extends GetxController
       "Dokumentasi",
     ],
   );
+
+  final whatsappOnHover = RxBool(false);
+  final instagramOnHover = RxBool(false);
+  final gmailOnHover = RxBool(false);
+  final mapOnhover = RxBool(false);
 
   @override
   void onInit() async {
@@ -84,6 +85,26 @@ class MainNavigationController extends GetxController
     update();
   }
 
+  setWhatsAppOnHover() {
+    whatsappOnHover.value = !whatsappOnHover.value;
+    update();
+  }
+
+  setInstagramOnHover() {
+    instagramOnHover.value = !instagramOnHover.value;
+    update();
+  }
+
+  setGmailOnHover() {
+    gmailOnHover.value = !gmailOnHover.value;
+    update();
+  }
+
+  setMapOnHover() {
+    mapOnhover.value = !mapOnhover.value;
+    update();
+  }
+
   onPageChange(index) {
     if (index == 0) {
       isHomeHover.value = true;
@@ -99,21 +120,21 @@ class MainNavigationController extends GetxController
       isProductHover.value = false;
       isDocumentHover.value = false;
       selectedMenu.value = index;
-    } else if (index == 3) {
+    } else if (index == 2) {
       isHomeHover.value = false;
       isAboutHover.value = false;
       isServiceHover.value = true;
       isProductHover.value = false;
       isDocumentHover.value = false;
       selectedMenu.value = index;
-    } else if (index == 4) {
+    } else if (index == 3) {
       isHomeHover.value = false;
       isAboutHover.value = false;
       isServiceHover.value = false;
       isProductHover.value = true;
       isDocumentHover.value = false;
       selectedMenu.value = index;
-    } else if (index == 5) {
+    } else if (index == 4) {
       isHomeHover.value = false;
       isAboutHover.value = false;
       isServiceHover.value = false;
@@ -207,7 +228,8 @@ class MainNavigationController extends GetxController
 
   launchMaps() async {
     final Uri googleMapsUrl = Uri.parse(
-        "https://www.google.com/maps/search/?api=1&query=$latitude,$longitude");
+        "https://www.google.com/maps/place/Belantara+Heritage+Coffeeshop/@-6.3574775,106.8335584,17z/data=!3m1!4b1!4m6!3m5!1s0x2e69ef5fe26dfae7:0x35722cf0b77cf213!8m2!3d-6.3574775!4d106.8335584!16s%2Fg%2F11l2vxrvzk?entry=ttu");
+
     if (await canLaunchUrl(googleMapsUrl)) {
       await launchUrl(googleMapsUrl);
     } else {
@@ -215,7 +237,7 @@ class MainNavigationController extends GetxController
     }
   }
 
-  launchEmail(String email) async {
+  launchGmail(String email) async {
     String emailUrl = 'mailto:$email';
     final Uri emailLaunchUrl = Uri.parse(emailUrl);
     if (await canLaunchUrl(emailLaunchUrl)) {

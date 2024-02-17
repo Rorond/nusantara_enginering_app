@@ -1,8 +1,7 @@
-import 'package:get/get.dart';
-import '../view/documentation_view.dart';
+import 'package:landing_page/core.dart';
 
-class DocumentationController extends GetxController {
-  DocumentationView? view;
+class FooterController extends GetxController {
+  FooterView? view;
 
   @override
   void onInit() {

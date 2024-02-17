@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:landing_page/core.dart';
 
 class CustomCombobox<T> extends StatelessWidget {
   final String label;

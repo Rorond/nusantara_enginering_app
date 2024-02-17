@@ -1,5 +1,4 @@
-import 'package:get/get.dart';
-import '../view/service_view.dart';
+import 'package:landing_page/core.dart';
 
 class ServiceController extends GetxController {
   ServiceView? view;

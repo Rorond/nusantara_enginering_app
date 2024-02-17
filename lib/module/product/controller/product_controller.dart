@@ -1,5 +1,4 @@
-import 'package:get/get.dart';
-import '../view/product_view.dart';
+import 'package:landing_page/core.dart';
 
 class ProductController extends GetxController {
   ProductView? view;
